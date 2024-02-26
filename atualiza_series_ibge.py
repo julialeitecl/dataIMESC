@@ -410,7 +410,7 @@ class dataImesc:
         dataframe_final=dataframe_organizado2.set_index("serie")
         return dataframe_final
 
-for i in [882]:
+for i in range(240,241):
     # Iniciando a Classe
     teste = dataImesc()
     # Insira o número da tabela desejada abaixo
@@ -419,46 +419,3 @@ for i in [882]:
     dataframe_Formatado = teste.procurar_tabela(tabela_search)
     # Exibindo os resultados
     print('\n')
-
-'''
-import pandas as pd
-#Iniciando a Classe
-teste=dataImesc()
-#Insira o número da tabela desejada abaixo
-tabela_search=140
-#Pesquisa iniciada
-dataframe_Formatado=teste.procurar_tabela(tabela_search)
-#Exibindo os resultados
-dt_frame = teste.formato_dataimesc()
-#dt_frame.to_excel('teste.xlsx')
-
-
-#MYSQL code begins here
-
-import mysql.connector
-from mysql.connector import errorcode
-try:
-    db_connection = mysql.connector.connect(host='localhost', user='root', password='', database='bd')
-    print("Conectado com sucesso!")
-    for i in range(394,398):
-        # Iniciando a Classe
-        teste = dataImesc()
-        # Insira o número da tabela desejada abaixo
-        tabela_search = i
-        # Pesquisa iniciada
-        dataframe_Formatado = teste.procurar_tabela(tabela_search)
-        # Exibindo os resultados
-        print("\n")
-
-	
-except mysql.connector.Error as error:
-    if error.errno == errorcode.ER_BAD_DB_ERROR:
-        print("Base de dados nao existe")
-    elif error.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-        print("Usuario ou senha incorretos")
-    else:
-        print(error)
-else:
-    db_connection.close()
-    print('conexão ao mySQL encerrada')
-'''

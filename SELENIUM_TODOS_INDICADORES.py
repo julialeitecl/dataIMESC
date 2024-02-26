@@ -1,10 +1,15 @@
+# conferir indicadores disponíveis no dataimesc a partir do front-end
+
 import requests as rq
 from bs4 import BeautifulSoup
 import pandas as pd
 
+# gerando dict vazio para inserir as informações do site
 df = {'indice':[],'titulo':[]}
 
-for i in range(1,2000):
+# dentro do "range" definir intervalo de séries que se deseja encontrar
+# obs: segundo número do parâmetro deve ser adicionado +1 para gerar corretamente
+for i in range(1,11):
     url = 'http://dataimesc.imesc.ma.gov.br/series/'+str(i)+'/show'
     reqs = rq.get(url)
     soup = BeautifulSoup(reqs.text, 'html.parser')
@@ -13,4 +18,8 @@ for i in range(1,2000):
         df['titulo'].append(title.get_text())
 
 data = pd.DataFrame(df)
-data.to_excel('teste_site.xlsx',index=False)
+print(data)
+
+# descomentar abaixo caso deseje exportar para excel
+# import
+# data.to_excel('indicadores_dataimesc.xlsx',index=False)
